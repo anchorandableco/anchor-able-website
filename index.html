@@ -644,6 +644,7 @@
           </div>
           <a class="buy-button" id="guideBuyButton" href="#" target="_blank" rel="noopener noreferrer">Buy on Gumroad</a>
         </div>
+        <p id="guideDialogLiteRow" hidden style="margin-top:14px;"><a class="full-guide-link" id="guideDialogLite" href="#" target="_blank" rel="noopener noreferrer">Or start with the free lite version →</a></p>
       </div>
     </dialog>
 
@@ -901,6 +902,7 @@
           intro: 'Written from my own approved claim — how adult disability cases are actually decided, and the habits that build the file that wins.',
           price: '$9',
           url: 'https://anchorable.gumroad.com/l/adult-ssdi-ssi',
+          lite: 'https://anchorable.gumroad.com/l/adult-ssdi-ssi-guide-lite-free',
           preview: [
             'Start the clock: the bare-bones information the online application really needs — and why the documents can follow.',
             'The symptom journal, the DSM-5 check, your employer write-ups, and the support letter your busy doctor will actually sign.',
@@ -931,6 +933,13 @@
             buyBtn.href = guide.url;
             buyBtn.style.opacity = '';
             buyBtn.style.pointerEvents = '';
+          }
+          var liteRow = document.getElementById('guideDialogLiteRow');
+          if (guide.lite) {
+            liteRow.hidden = false;
+            document.getElementById('guideDialogLite').href = guide.lite;
+          } else {
+            liteRow.hidden = true;
           }
           var preview = document.getElementById('guideDialogPreview');
           preview.textContent = '';
