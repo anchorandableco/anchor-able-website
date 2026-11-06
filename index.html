@@ -578,7 +578,7 @@
             <span class="guide-type">Benefits guide</span>
             <h3>Disabled Adult Child Benefits</h3>
             <p>Learn the basic relationship between disability onset, a parent’s Social Security record, Medicare, and SSI.</p>
-            <span class="guide-offer"><span class="offer-badge">Launch special</span><strong>$9 introductory price</strong></span>
+            <span class="guide-offer"><span class="offer-badge">Coming soon</span><strong>$9 introductory price</strong></span>
             <span class="guide-open">Preview guide</span>
           </button>
           <article class="guide-card coming-soon">
@@ -592,11 +592,13 @@
             <p>Practical help with understanding respite support, documenting needs, and preparing for assessments.</p>
           </article>
           
-          <article class="guide-card coming-soon">
-            <span class="guide-type">Coming soon</span>
-            <h3>Adult Disability</h3>
-            <p>Support for navigating adult disability benefits, services, and major life transitions.</p>
-          </article>
+          <button class="guide-card" id="guide-adult-ssdi-ssi" type="button" data-guide="adult-ssdi-ssi" aria-haspopup="dialog">
+            <span class="guide-type">Benefits guide</span>
+            <h3>Adult SSDI &amp; SSI</h3>
+            <p>A plain-language playbook for applying for disability benefits as an adult — start the clock with the bare-bones application, then build the file that decides your case.</p>
+            <span class="guide-offer"><span class="offer-badge">Launch special</span><strong>$9 introductory price</strong></span>
+            <span class="guide-open">Preview guide</span>
+          </button>
           <article class="guide-card coming-soon">
             <span class="guide-type">Coming soon</span>
             <h3>Conservatorship</h3>
@@ -877,6 +879,18 @@
             'Key details to gather about work history, benefit records, disability dates, and current coverage.',
             'Questions to ask SSA about DAC eligibility, SSI interaction, and Medicare timing.'
           ]
+        },
+        'adult-ssdi-ssi': {
+          title: 'Adult SSDI & SSI',
+          intro: 'Written from my own approved claim — how adult disability cases are actually decided, and the habits that build the file that wins.',
+          price: '$9',
+          url: '#',
+          soon: true, /* LAUNCH: remove 'soon' and set the Gumroad product URL when the guide goes on sale */
+          preview: [
+            'Start the clock: the bare-bones information the online application really needs — and why the documents can follow.',
+            'The symptom journal, the DSM-5 check, your employer write-ups, and the support letter your busy doctor will actually sign.',
+            'Surviving the wait: the state disability bridge, weekly caseworker check-ins, the two-days-a-month rule, and what your approval can unlock for your children.'
+          ]
         }
       };
       var dialog = document.getElementById('guideDialog');
@@ -891,7 +905,18 @@
           document.getElementById('guideDialogTitle').textContent = guide.title;
           document.getElementById('guideDialogIntro').textContent = guide.intro;
           document.getElementById('guideDialogPrice').textContent = guide.price;
-          document.getElementById('guideBuyButton').href = guide.url;
+          var buyBtn = document.getElementById('guideBuyButton');
+          if (guide.soon) {
+            buyBtn.textContent = 'Coming soon';
+            buyBtn.removeAttribute('href');
+            buyBtn.style.opacity = '.55';
+            buyBtn.style.pointerEvents = 'none';
+          } else {
+            buyBtn.textContent = 'Buy on Gumroad';
+            buyBtn.href = guide.url;
+            buyBtn.style.opacity = '';
+            buyBtn.style.pointerEvents = '';
+          }
           var preview = document.getElementById('guideDialogPreview');
           preview.textContent = '';
           guide.preview.forEach(function (item) {
