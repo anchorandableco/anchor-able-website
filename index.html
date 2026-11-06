@@ -226,6 +226,7 @@
     .guide-offer { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
     .guide-offer strong { color: var(--teal-deep); font-size: 1.05rem; }
     .offer-badge { display: inline-flex; align-items: center; min-height: 28px; padding: 4px 10px; border-radius: 999px; background: var(--teal-soft); color: var(--teal-deep); font-size: .76rem; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; }
+    .card-lite-link { align-self: flex-start; margin-top: 12px; color: var(--gold); font-weight: 700; text-underline-offset: 4px; }
     .guide-open { display: inline-block; margin-top: 18px; color: var(--teal-deep); font-weight: 700; text-decoration: underline; text-underline-offset: 5px; }
 
     .guide-dialog {
@@ -562,41 +563,42 @@
             </div>
             <a class="featured-guide-button" href="/regional-center.html">See where we are now →</a>
           </article>
-          <button class="guide-card" id="guide-childhood-ssi" type="button" data-guide="childhood-ssi" aria-haspopup="dialog">
+          <div class="guide-card" id="guide-childhood-ssi" role="button" tabindex="0" data-guide="childhood-ssi" aria-haspopup="dialog">
             <span class="guide-type">Benefits guide</span>
             <h3>Childhood SSI Benefits</h3>
             <p>A plain-language starting point for understanding eligibility, records, household information, and the application process.</p>
             <span class="guide-offer"><span class="offer-badge">Launch special</span><strong>$9 introductory price</strong></span>
+            <a class="card-lite-link" href="https://anchorable.gumroad.com/l/childhood-ssi-guide-lite-free" target="_blank" rel="noopener noreferrer">Free lite version →</a>
             <span class="guide-open">Preview guide</span>
-          </button>
-          <button class="guide-card" id="guide-caregiver" type="button" data-guide="caregiver" aria-haspopup="dialog">
+          </div>
+          <div class="guide-card" id="guide-caregiver" role="button" tabindex="0" data-guide="caregiver" aria-haspopup="dialog">
             <span class="guide-type">Caregiver guide</span>
             <h3>The Caregiver’s Guide</h3>
             <p>Practical systems for keeping documents, calls, appointments, and changing support needs organized.</p>
             <span class="guide-offer"><span class="offer-badge">Launch special</span><strong>$9 introductory price</strong></span>
             <span class="guide-open">Preview guide</span>
-          </button>
-          <button class="guide-card" id="guide-ihss" type="button" data-guide="ihss" aria-haspopup="dialog">
+          </div>
+          <div class="guide-card" id="guide-ihss" role="button" tabindex="0" data-guide="ihss" aria-haspopup="dialog">
             <span class="guide-type">IHSS guide</span>
             <h3>Getting the IHSS Hours You Need</h3>
             <p>Prepare a clearer picture of daily care, time, frequency, safety needs, and the help actually provided.</p>
             <span class="guide-offer"><span class="offer-badge">Launch special</span><strong>$9 introductory price</strong></span>
             <span class="guide-open">Preview guide</span>
-          </button>
-          <button class="guide-card" id="guide-able" type="button" data-guide="able" aria-haspopup="dialog">
+          </div>
+          <div class="guide-card" id="guide-able" role="button" tabindex="0" data-guide="able" aria-haspopup="dialog">
             <span class="guide-type">Financial guide</span>
             <h3>ABLE Accounts &amp; the $2,000 Resource Limit</h3>
             <p>Understand how an ABLE account can fit into benefits planning, spending, and recordkeeping.</p>
             <span class="guide-offer"><span class="offer-badge">Launch special</span><strong>$9 introductory price</strong></span>
             <span class="guide-open">Preview guide</span>
-          </button>
-          <button class="guide-card" id="guide-dac" type="button" data-guide="dac" aria-haspopup="dialog">
+          </div>
+          <div class="guide-card" id="guide-dac" role="button" tabindex="0" data-guide="dac" aria-haspopup="dialog">
             <span class="guide-type">Benefits guide</span>
             <h3>Disabled Adult Child Benefits</h3>
             <p>Learn the basic relationship between disability onset, a parent’s Social Security record, Medicare, and SSI.</p>
             <span class="guide-offer"><span class="offer-badge">Coming soon</span><strong>$9 introductory price</strong></span>
             <span class="guide-open">Preview guide</span>
-          </button>
+          </div>
           <article class="guide-card coming-soon">
             <span class="guide-type">Coming soon</span>
             <h3>Special Needs Trust</h3>
@@ -608,13 +610,14 @@
             <p>Practical help with understanding respite support, documenting needs, and preparing for assessments.</p>
           </article>
           
-          <button class="guide-card" id="guide-adult-ssdi-ssi" type="button" data-guide="adult-ssdi-ssi" aria-haspopup="dialog">
+          <div class="guide-card" id="guide-adult-ssdi-ssi" role="button" tabindex="0" data-guide="adult-ssdi-ssi" aria-haspopup="dialog">
             <span class="guide-type">Benefits guide</span>
             <h3>Adult SSDI &amp; SSI</h3>
             <p>A plain-language playbook for applying for disability benefits as an adult — start the clock with the bare-bones application, then build the file that decides your case.</p>
             <span class="guide-offer"><span class="offer-badge">Launch special</span><strong>$9 introductory price</strong></span>
+            <a class="card-lite-link" href="https://anchorable.gumroad.com/l/adult-ssdi-ssi-guide-lite-free" target="_blank" rel="noopener noreferrer">Free lite version →</a>
             <span class="guide-open">Preview guide</span>
-          </button>
+          </div>
           <article class="guide-card coming-soon">
             <span class="guide-type">Coming soon</span>
             <h3>Conservatorship</h3>
@@ -915,8 +918,9 @@
       var closeDialog = document.getElementById('closeGuideDialog');
       var lastGuideButton = null;
 
-      document.querySelectorAll('button.guide-card').forEach(function (card) {
-        card.addEventListener('click', function () {
+      document.querySelectorAll('.guide-card[data-guide]').forEach(function (card) {
+        card.addEventListener('click', function (event) {
+          if (event.target.closest('a')) return;
           var guide = guides[card.getAttribute('data-guide')];
           if (!guide) return;
           lastGuideButton = card;
@@ -953,6 +957,11 @@
         });
       });
 
+      document.querySelectorAll('.guide-card[data-guide]').forEach(function (card) {
+        card.addEventListener('keydown', function (event) {
+          if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); card.click(); }
+        });
+      });
       closeDialog.addEventListener('click', function () { dialog.close(); });
       dialog.addEventListener('click', function (event) {
         if (event.target === dialog) dialog.close();
