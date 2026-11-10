@@ -444,7 +444,37 @@
     .picker-row { display: flex; flex-wrap: wrap; gap: 12px; }
     .picker-chip { display: inline-block; padding: 13px 20px; border: 2px solid #0F2340; border-radius: 999px; color: #0F2340; font-weight: 700; text-decoration: none; line-height: 1.2; }
     .picker-chip:hover, .picker-chip:focus { background: #0F2340; color: #fff; }
+  
+    .welcome-strip { background: #0F2340; color: #fff; padding: clamp(22px, 4vw, 36px) 0; }
+    .strip-flex { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .strip-photo { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); flex: none; }
+    .strip-hi { font-size: 1.12rem; line-height: 1.45; margin: 0 0 14px; max-width: 640px; }
+    .dash { display: grid; grid-template-columns: 248px 1fr; gap: clamp(20px, 4vw, 44px); align-items: start; padding: clamp(24px, 4vw, 40px) 0 clamp(56px, 8vw, 84px); }
+    .dash-nav { position: sticky; top: 16px; display: flex; flex-direction: column; gap: 6px; }
+    .dash-link { text-align: left; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--line); background: #fff; color: #0F2340; font-weight: 700; text-decoration: none; cursor: pointer; font: inherit; font-size: .98rem; }
+    .dash-link:hover { border-color: #0F2340; }
+    .dash-link.active { background: #0F2340; color: #fff; border-color: #0F2340; }
+    .js-tabs .panel { display: none; }
+    .js-tabs .panel.active { display: block; }
+    .panel h2 { margin-top: 0; }
+    .panel-cards { display: grid; gap: 20px; max-width: 780px; }
+    .warm-line { font-size: 1.07rem; font-style: italic; margin: 0 0 16px; }
+    .panel-short { font-size: 1.02rem; margin: 0 0 20px; max-width: 780px; }
+    .tribe-line { font-size: 1.3rem; font-weight: 800; color: #0F2340; margin: 4px 0 12px; }
+    .proof-line { font-weight: 700; margin: 18px 0 6px; }
+    .welcome-img { width: 100%; max-width: 780px; border-radius: var(--radius); margin-top: 20px; display: block; }
+    .calc-promo { margin-top: 20px; padding: 18px 20px; border: 1px solid var(--line); border-radius: var(--radius); max-width: 780px; }
+    .calc-promo p { margin: 0 0 10px; }
+    .panel .checklist { padding: 26px 0 4px; }
+    .panel .about, .panel .contact { padding: 0; }
+    .panel .wrap { padding-left: 0; padding-right: 0; max-width: none; }
+    @media (max-width: 860px) {
+      .dash { grid-template-columns: 1fr; }
+      .dash-nav { top: 0; flex-direction: row; overflow-x: auto; padding: 8px 2px 10px; background: #fff; z-index: 30; }
+      .dash-link { white-space: nowrap; }
+    }
   </style>
+<script>document.documentElement.classList.add('js-tabs');</script>
 </head>
 <body>
   
@@ -472,56 +502,47 @@
   </header>
 
   <main id="main">
-    <section class="hero">
-      <div class="wrap">
-        <div class="opening-message">
-          <p class="eyebrow">A note for the parent awake tonight</p>
-          <h1>Disability benefits, explained by a parent who's been through it.</h1>
-          <p class="hero-subhead">Plain-language, step-by-step guides for SSI, SSDI, IHSS, and ABLE accounts, written from 20+ years of real claims — educational guidance, parent to parent.</p>
-        </div>
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <img class="founder-photo" src="beth-headshot.jpg" alt="Beth, founder of Anchor & Able Guide Co." />
-            <p>I'm Beth. I've navigated this system for my own daughter for over 20 years — and through the adult application process myself.</p>
-            <div class="actions">
-              <a class="button" href="/free-guides.html">Start with a free guide</a>
-              <a class="button outline" href="/ssi-parental-deeming-calculator">Try the free deeming calculator</a>
-            </div>
+    <section class="welcome-strip">
+      <div class="wrap strip-flex">
+        <img class="strip-photo" src="beth-headshot.jpg" alt="Beth, founder of Anchor & Able Guide Co." />
+        <div>
+          <p class="strip-hi">I'm Beth. I've been through this system as a parent for over 20 years — what I learned the hard way, I turned into these guides.</p>
+          <div class="actions">
+            <a class="button" href="/free-guides.html">Start with a free guide</a>
+            <a class="button outline" href="/ssi-parental-deeming-calculator">Try the free deeming calculator</a>
           </div>
         </div>
       </div>
     </section>
-    <section class="proof-strip" aria-label="Why families trust these guides">
-      <div class="wrap proof-grid">
-        <span><strong>20+ years</strong> navigating these systems</span>
-        <span><strong>7 guides</strong>, one per topic</span>
-        <span>Written from <strong>real claims</strong> — parent to parent</span>
-      </div>
+    <div class="wrap">
+    <div class="dash" id="dash">
+      <nav class="dash-nav" aria-label="Topics">
+          <a class="dash-link active" href="#panel-welcome" data-panel="welcome">Welcome</a>
+          <a class="dash-link" href="#panel-childhood" data-panel="childhood">SSI for My Child</a>
+          <a class="dash-link" href="#panel-ihss" data-panel="ihss">IHSS</a>
+          <a class="dash-link" href="#panel-able" data-panel="able">ABLE Accounts</a>
+          <a class="dash-link" href="#panel-turning18" data-panel="turning18">Turning 18</a>
+          <a class="dash-link" href="#panel-adult" data-panel="adult">Adult SSDI & SSI</a>
+          <a class="dash-link" href="#panel-caregiver" data-panel="caregiver">Caregiver's</a>
+          <a class="dash-link" href="#panel-regional" data-panel="regional">Regional Center</a>
+          <a class="dash-link" href="#panel-meetbeth" data-panel="meetbeth">Meet Beth</a>
+          <a class="dash-link" href="#panel-goodtoknow" data-panel="goodtoknow">Good to Know</a>
+      </nav>
+      <div class="dash-main" id="dashMain">
+    <section class="panel" id="panel-welcome" data-label="Welcome">
+      <h1>Disability benefits, explained by a parent who's been through it.</h1>
+      <p class="tribe-line">It takes a tribe. This is ours.</p>
+      <p>If it's late at night and you're still up, searching for answers about your child's benefits — I've been exactly where you are. Everything here is written parent to parent, from real claims in my own family: the applications, the denials, the appeals, the assessments.</p>
+      <p class="proof-line">20+ years navigating these systems · 7 guides, one per topic · Plain language, no jargon</p>
+      <p><strong>Pick your topic</strong> — from the list on the left, or the tabs at the top on a phone. Each topic has a free starter guide and a full guide for $9, so you can start tonight and go deeper when you're ready.</p>
+      <img class="welcome-img" src="share-cover.jpg" alt="Sunrise over water" />
     </section>
-    <section class="topic-picker" aria-label="Find your topic">
-      <div class="wrap">
-        <p class="picker-label">What are you here for?</p>
-        <div class="picker-row">
-          <a class="picker-chip" href="#guide-childhood-ssi">SSI for my child</a>
-          <a class="picker-chip" href="#guide-protective-supervision">More IHSS hours</a>
-          <a class="picker-chip" href="#guide-adult-ssdi-ssi">Applying as an adult</a>
-          <a class="picker-chip" href="#guide-able">Saving without losing SSI</a>
-          <a class="picker-chip" href="#guide-dac">Turning 18</a>
-        </div>
-      </div>
-    </section>
-    <section class="guides" id="guides">
-      <div class="wrap">
-        <div class="section-intro">
-          <div>
-            <p class="eyebrow">Digital guides</p>
-            <h2>Less overwhelm. More direction.</h2>
-          </div>
-          <p>Open any guide for a short sample of what's inside — every one written from a real case, ours. Three of them start free.</p>
-        </div>
-        <div class="guide-grid">
-          
-          <div class="guide-card" id="guide-childhood-ssi" role="button" tabindex="0" data-guide="childhood-ssi" aria-haspopup="dialog">
+    <section class="panel" id="panel-childhood" data-label="SSI for My Child">
+      <h2>SSI for My Child</h2>
+      <p class="warm-line">I applied for my daughter's SSI without a map. This is the map I wish someone had handed me.</p>
+      <p class="panel-short"><strong>In short:</strong> You can apply online at ssa.gov, by phone, or in person — but don't rush it. Gather your child's medical records, school records, and a list of every doctor first; an incomplete application is a common reason families wait months just to be denied.</p>
+      <div class="panel-cards">
+        <div class="guide-card" id="guide-childhood-ssi" role="button" tabindex="0" data-guide="childhood-ssi" aria-haspopup="dialog">
             <span class="guide-type">Benefits guide</span>
             <h3>Childhood SSI Benefits</h3>
             <p>A plain-language starting point for understanding eligibility, records, household information, and the application process.</p>
@@ -529,14 +550,18 @@
             <a class="card-lite-link" href="/free-guides.html" target="_blank" rel="noopener noreferrer">Start free — lite version →</a>
             <span class="guide-open">Preview guide</span>
           </div>
-          <div class="guide-card" id="guide-caregiver" role="button" tabindex="0" data-guide="caregiver" aria-haspopup="dialog">
-            <span class="guide-type">Caregiver guide</span>
-            <h3>The Caregiver’s Guide</h3>
-            <p>Practical systems for keeping documents, calls, appointments, and changing support needs organized.</p>
-            <span class="guide-offer"><strong>$9</strong></span>
-            <span class="guide-open">Preview guide</span>
-          </div>
-          <div class="guide-card" id="guide-ihss" role="button" tabindex="0" data-guide="ihss" aria-haspopup="dialog">
+      </div>
+      <div class="calc-promo">
+        <p><strong>Free tool:</strong> the 2026 Deeming Calculator shows how a parent's income counts toward a child's SSI — the math behind most denials, in plain language, with a printable checklist.</p>
+        <a class="button" href="/ssi-parental-deeming-calculator">Try the free deeming calculator</a>
+      </div>
+    </section>
+    <section class="panel" id="panel-ihss" data-label="IHSS">
+      <h2>IHSS</h2>
+      <p class="warm-line">I sat through assessments without knowing what the county was really looking for. Now I know — and it's in these two guides.</p>
+      <p class="panel-short"><strong>In short:</strong> Most families are under-assessed because they don't document needs in the language IHSS uses. Keep a two-week log of everything you help with — every prompt, every reminder, every nighttime check. And if your child can't be left alone safely, ask about Protective Supervision: it's the service worth the most hours, and most families never hear it exists.</p>
+      <div class="panel-cards">
+        <div class="guide-card" id="guide-ihss" role="button" tabindex="0" data-guide="ihss" aria-haspopup="dialog">
             <span class="guide-type">IHSS guide</span>
             <h3>Getting the IHSS Hours You Need</h3>
             <p>Prepare a clearer picture of daily care, time, frequency, safety needs, and the help actually provided.</p>
@@ -544,7 +569,7 @@
             <a class="card-lite-link" href="/free-guides.html" target="_blank" rel="noopener noreferrer">Free lite version →</a>
             <span class="guide-open">Preview guide</span>
           </div>
-<div class="guide-card" id="guide-protective-supervision" role="button" tabindex="0" data-guide="protective-supervision" aria-haspopup="dialog">
+        <div class="guide-card" id="guide-protective-supervision" role="button" tabindex="0" data-guide="protective-supervision" aria-haspopup="dialog">
             <span class="guide-type">IHSS guide</span>
             <h3>IHSS Protective Supervision</h3>
             <p>The step-by-step guide to the IHSS service worth the most hours — eligibility, the safety journal, the home-visit binder, and the decision.</p>
@@ -553,21 +578,42 @@
             <a class="card-lite-link" href="/free-guides.html" target="_blank" rel="noopener noreferrer">Start free — lite version →</a>
             <span class="guide-open">Preview guide</span>
           </div>
-          <div class="guide-card" id="guide-able" role="button" tabindex="0" data-guide="able" aria-haspopup="dialog">
+      </div>
+    </section>
+    <section class="panel" id="panel-able" data-label="ABLE Accounts">
+      <h2>ABLE Accounts</h2>
+      <p class="warm-line">Nobody told us we could save for my daughter without risking her SSI. This is the tool I wish we'd had from the start.</p>
+      <p class="panel-short"><strong>In short:</strong> Normally SSI cuts off when countable resources go over $2,000 — but money in an ABLE account (up to $100,000) doesn't count. It's the single most underused tool I see.</p>
+      <div class="panel-cards">
+        <div class="guide-card" id="guide-able" role="button" tabindex="0" data-guide="able" aria-haspopup="dialog">
             <span class="guide-type">Financial guide</span>
             <h3>ABLE Accounts &amp; the $2,000 Resource Limit</h3>
             <p>Understand how an ABLE account can fit into benefits planning, spending, and recordkeeping.</p>
             <span class="guide-offer"><strong>$9</strong></span>
             <span class="guide-open">Preview guide</span>
           </div>
-          <div class="guide-card" id="guide-dac" role="button" tabindex="0" data-guide="dac" aria-haspopup="dialog">
+      </div>
+    </section>
+    <section class="panel" id="panel-turning18" data-label="Turning 18">
+      <h2>Turning 18</h2>
+      <p class="warm-line">When my daughter turned 18, everything was redetermined under a whole new set of rules — and nobody warned us. Start at 17.</p>
+      <p class="panel-short"><strong>In short:</strong> At 18, benefits are redetermined under the adult rules, which are completely different. Start preparing at 17: the adult disability standard, the SSI income rules, and whether Disabled Adult Child benefits apply. Applying as an adult yourself? See the Adult SSDI &amp; SSI topic, too.</p>
+      <div class="panel-cards">
+        <div class="guide-card" id="guide-dac" role="button" tabindex="0" data-guide="dac" aria-haspopup="dialog">
             <span class="guide-type">Benefits guide</span>
             <h3>Disabled Adult Child Benefits</h3>
             <p>Learn the basic relationship between disability onset, a parent’s Social Security record, Medicare, and SSI.</p>
             <span class="guide-offer"><strong>$9</strong></span>
             <span class="guide-open">Preview guide</span>
           </div>
-          <div class="guide-card" id="guide-adult-ssdi-ssi" role="button" tabindex="0" data-guide="adult-ssdi-ssi" aria-haspopup="dialog">
+      </div>
+    </section>
+    <section class="panel" id="panel-adult" data-label="Adult SSDI & SSI">
+      <h2>Adult SSDI &amp; SSI</h2>
+      <p class="warm-line">I went through the adult application myself — approved after more than two years of waiting, following up, and staying persistent. This is my own playbook.</p>
+      <p class="panel-short"><strong>In short:</strong> Start the clock today with the bare-bones application, then build the file that decides your case. The guide walks the whole road — SSDI vs SSI, the five habits that decide cases, and a first-week checklist.</p>
+      <div class="panel-cards">
+        <div class="guide-card" id="guide-adult-ssdi-ssi" role="button" tabindex="0" data-guide="adult-ssdi-ssi" aria-haspopup="dialog">
             <span class="guide-type">Benefits guide</span>
             <h3>Adult SSDI &amp; SSI</h3>
             <p>A plain-language playbook for applying for disability benefits as an adult — start the clock with the bare-bones application, then build the file that decides your case.</p>
@@ -575,13 +621,113 @@
             <a class="card-lite-link" href="/free-guides.html" target="_blank" rel="noopener noreferrer">Start free — lite version →</a>
             <span class="guide-open">Preview guide</span>
           </div>
-          
-          
-          
-          
+      </div>
+    </section>
+    <section class="panel" id="panel-caregiver" data-label="Caregiver's">
+      <h2>The Caregiver's Guide</h2>
+      <p class="warm-line">Twenty years of calls, notices, and deadlines taught me one thing: this system rewards the organized. This is my system.</p>
+      <p class="panel-short"><strong>In short:</strong> Start with one thing, not everything. Pick the single most urgent need — usually the application or an appeal deadline — and learn just that piece. Then the next. The free reset checklist below is where every call or appointment should start.</p>
+      <div class="panel-cards">
+        <div class="guide-card" id="guide-caregiver" role="button" tabindex="0" data-guide="caregiver" aria-haspopup="dialog">
+            <span class="guide-type">Caregiver guide</span>
+            <h3>The Caregiver’s Guide</h3>
+            <p>Practical systems for keeping documents, calls, appointments, and changing support needs organized.</p>
+            <span class="guide-offer"><strong>$9</strong></span>
+            <span class="guide-open">Preview guide</span>
+          </div>
+      </div>
+      <section class="checklist" id="checklist">
+      <div class="wrap check-card">
+        <div class="check-copy">
+          <p class="eyebrow">Your five-minute reset</p>
+          <h2>Before your next call or appointment</h2>
+          <p>Use this simple preparation list whenever the system starts to feel scattered. Copy it into your notes and add the specifics for your situation.</p>
+          <button class="copy-button" id="copyChecklist" type="button">Copy checklist</button>
+          <p class="copy-status" id="copyStatus" aria-live="polite"></p>
+          <p class="check-next">Want this, plus the questions to ask on the call? The <a href="#guide-caregiver">Caregiver's Guide</a> ($9) has the full kit — lists, logs, and what to write down before anyone calls you back.</p>
+        </div>
+        <div class="check-items" aria-label="Preparation checklist">
+          <div class="check-item"><span class="check-icon" aria-hidden="true">✓</span><span>Write the exact question you need answered.</span></div>
+          <div class="check-item"><span class="check-icon" aria-hidden="true">✓</span><span>Put the notice, case number, and deadline in front of you.</span></div>
+          <div class="check-item"><span class="check-icon" aria-hidden="true">✓</span><span>Gather the documents that support your answer.</span></div>
+          <div class="check-item"><span class="check-icon" aria-hidden="true">✓</span><span>Note who you speak with, the date, and what they say.</span></div>
+          <div class="check-item"><span class="check-icon" aria-hidden="true">✓</span><span>End by confirming the next step and its deadline.</span></div>
         </div>
       </div>
     </section>
+    </section>
+    <section class="panel" id="panel-regional" data-label="Regional Center">
+      <h2>Regional Center</h2>
+      <div class="panel-cards">
+        <article class="guide-card featured-guide" aria-labelledby="regionalCenterTitle">
+            <div class="featured-guide-copy">
+              <span class="guide-type">Real life in progress</span>
+              <h3 id="regionalCenterTitle">Regional Center: The Guide I’m Writing in Real Time</h3>
+              <p class="featured-guide-lede">A coordinator assigned at last — after six months of asking in writing. No budget yet. A school program ending at 22. This is the side of Self-Determination nobody puts in the brochure.</p>
+              <div class="progress-status" aria-label="Current Regional Center guide progress">
+                <span>IPP in hand</span>
+                <span>Trainings done</span>
+                <span>Coordinator assigned Nov 5</span>
+                <span>Budget not set</span>
+              </div>
+              <p class="featured-guide-closing">This is the part nobody puts in the brochure. I write it down as it happens — the wins and the waiting — on the Regional Center page.</p>
+            </div>
+            <a class="featured-guide-button" href="/regional-center.html">See where we are now →</a>
+          </article>
+      </div>
+    </section>
+    <section class="panel" id="panel-meetbeth" data-label="Meet Beth">
+      <h2>Meet Beth</h2>
+      <section class="about" id="about">
+      <div class="wrap about-grid">
+        <blockquote class="quote">“Families deserve a clear path through systems that were never written in plain language.”</blockquote>
+        <div class="about-copy">
+          <p class="eyebrow">Why Anchor &amp; Able Guide Co.</p>
+          <h2>One parent’s experience, shared with another.</h2>
+          <p>If it's late at night and you're still up, searching for answers about your child's benefits — I've been exactly where you are. I'm Beth. I was a single parent working full-time while raising two children and navigating the system on my own. For over 20 years I've navigated disability benefits for my own daughter — the denials, the paperwork, the phone calls that go nowhere — and I've been through the adult application process myself, approved after more than two years of waiting, following up, and staying persistent.</p>
+          <p>Every guide comes from a real application, assessment, or appeal in my own family — nothing here is theory. The focus is on real steps: reading notices, organizing records, documenting needs, and knowing which questions to ask. It's going to be OK — one step at a time.</p>
+        </div>
+      </div>
+    </section>
+    </section>
+    <section class="panel" id="panel-goodtoknow" data-label="Good to Know">
+      <h2>Good to Know</h2>
+      <div class="faq-more">
+            <h3>More good to know</h3>
+            <details>
+              <summary>Who is this guidance for?</summary>
+              <p>It is for disabled people, parents, caregivers, representative payees, conservators, and family members who want a clearer way to understand benefit processes and prepare for the next step.</p>
+            </details>
+            <details>
+              <summary>Is Anchor &amp; Able Guide Co. a law firm?</summary>
+              <p>No. Anchor &amp; Able Guide Co. provides general educational information and practical process guidance, not legal advice or legal representation.</p>
+            </details>
+            <details>
+              <summary>Does this replace official agency guidance?</summary>
+              <p>No. Program rules can change and individual facts matter. Always confirm current requirements with the administering agency or a qualified professional before making a financial or legal decision.</p>
+            </details>
+            <details>
+              <summary>What should I do with an urgent deadline?</summary>
+              <p>Read the notice for appeal or response instructions, keep a copy, and contact the agency or an appropriate legal-services provider promptly. Do not wait for general educational content when a deadline is running.</p>
+            </details>
+          </div>
+      <div style="margin-top:26px;"><p><strong>In the works:</strong> <a href="https://tally.so/r/ArK8jz?guide=special-needs-trust" target="_blank" rel="noopener noreferrer">Special Needs Trust</a> · <a href="https://tally.so/r/ArK8jz?guide=respite-hours" target="_blank" rel="noopener noreferrer">Respite Hours</a> · <a href="https://tally.so/r/ArK8jz?guide=conservatorship" target="_blank" rel="noopener noreferrer">Conservatorship</a> — tap one to get word when it's ready →</p></div>
+      <section class="contact" id="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <p class="eyebrow">Get in touch</p>
+          <h2>Have a question?</h2>
+        </div>
+        <div class="contact-copy">
+          <p>Email Anchor &amp; Able Guide Co. for questions about the digital guides and general inquiries.</p>
+          <a class="contact-email" href="mailto:anchorandableco@gmail.com">anchorandableco@gmail.com</a>
+        </div>
+      </div>
+    </section>
+    </section>
+      </div>
+    </div>
+    </div>
     <dialog class="guide-dialog" id="guideDialog" aria-labelledby="guideDialogTitle">
       <div class="dialog-inner">
         <div class="dialog-top">
@@ -604,124 +750,6 @@
         <p id="guideDialogLiteRow" hidden style="margin-top:14px;"><a class="full-guide-link" id="guideDialogLite" href="#" target="_blank" rel="noopener noreferrer">Or start with the free lite version →</a></p>
       </div>
     </dialog>
-    <section class="regional-center-feature" aria-labelledby="regionalCenterTitle">
-      <div class="wrap">
-        <article class="guide-card featured-guide" aria-labelledby="regionalCenterTitle">
-            <div class="featured-guide-copy">
-              <span class="guide-type">Real life in progress</span>
-              <h3 id="regionalCenterTitle">Regional Center: The Guide I’m Writing in Real Time</h3>
-              <p class="featured-guide-lede">A coordinator assigned at last — after six months of asking in writing. No budget yet. A school program ending at 22. This is the side of Self-Determination nobody puts in the brochure.</p>
-              <div class="progress-status" aria-label="Current Regional Center guide progress">
-                <span>IPP in hand</span>
-                <span>Trainings done</span>
-                <span>Coordinator assigned Nov 5</span>
-                <span>Budget not set</span>
-              </div>
-              <p class="featured-guide-closing">This is the part nobody puts in the brochure. I write it down as it happens — the wins and the waiting — on the Regional Center page.</p>
-            </div>
-            <a class="featured-guide-button" href="/regional-center.html">See where we are now →</a>
-          </article>
-      </div>
-    </section>
-    <section class="faq" id="questions">
-      <div class="wrap faq-grid">
-        <div>
-          <p class="eyebrow">Frequently asked questions</p>
-          <h2>Start with the question you have right now.</h2>
-        </div>
-        <div>
-          <div class="faq-list">
-            <article class="faq-item">
-              <h3>How do I apply for SSI for my disabled child?</h3>
-              <p>You can apply online at ssa.gov, by phone, or in person — but don't rush the application. Gather your child's medical records, school records, and a list of every doctor first, because an incomplete application is a common reason families wait months just to be denied. <a class="faq-guide" href="#guide-childhood-ssi">My Childhood SSI guide walks through the whole application step by step.</a> The free <a class="faq-guide" href="/free-guides.html">Childhood SSI starter guide</a> walks the first steps with you — start there, tonight, for free.</p>
-            </article>
-            <article class="faq-item">
-              <h3>How can I get more IHSS hours?</h3>
-              <p>Most families are under-assessed because they don't know how to document their child's needs in the language IHSS uses. Keep a log for two weeks of everything you help with — every prompt, every reminder, every nighttime check — and bring it to the assessment. <a class="faq-guide" href="#guide-ihss">My IHSS Hours guide shows you exactly what to track and say.</a> The other big one is Protective Supervision — if your child cannot be left alone safely, those supervision hours add up fast, and most families never hear that the service exists. <a class="faq-guide" href="#guide-protective-supervision">My Protective Supervision guide</a> covers how to ask for it and how to document the need.</p>
-            </article>
-            <article class="faq-item">
-              <h3>Can my child save money and still keep SSI?</h3>
-              <p>Yes — through an ABLE account. Normally SSI cuts off if countable resources go over $2,000, but money in an ABLE account (up to $100,000) doesn't count. It's the single most underused tool I see. <a class="faq-guide" href="#guide-able">My ABLE Accounts guide explains how to open one and use it without risking benefits.</a> The <a class="faq-guide" href="#guide-able">ABLE guide</a> has the full how-to for $9 — and the $2,000 limit is exactly where families get tripped up.</p>
-            </article>
-            <article class="faq-item">
-              <h3>What happens to my child's disability benefits when they turn 18?</h3>
-              <p>Everything gets redetermined under the adult rules, which are completely different — and most families don't find out until the letter arrives. Start preparing at 17: understand the adult disability standard, the SSI income rules, and whether Disabled Adult Child benefits apply. <a class="faq-guide" href="#guide-dac">My Disabled Adult Child Benefits guide covers the transition.</a> Two guides cover this corner: <a class="faq-guide" href="#guide-dac">Disabled Adult Child Benefits</a> and the <a class="faq-guide" href="#guide-adult-ssdi-ssi">Adult SSDI &amp; SSI guide</a> — both $9, both written from our own redetermination.</p>
-            </article>
-            <article class="faq-item">
-              <h3>Where do I even start? This system is brand new to me.</h3>
-              <p>Start with one thing, not everything. Pick the single most urgent need — usually the application or an appeal deadline — and learn just that piece. Then the next. <a class="faq-guide" href="#guide-caregiver">My Caregiver's Guide is the map for the whole journey, one step at a time.</a> Start free. The <a class="faq-guide" href="/free-guides.html">three starter guides</a> cost nothing and will tell you which corner is yours.</p>
-            </article>
-          </div>
-
-          <div class="faq-more">
-            <h3>More good to know</h3>
-            <details>
-              <summary>Who is this guidance for?</summary>
-              <p>It is for disabled people, parents, caregivers, representative payees, conservators, and family members who want a clearer way to understand benefit processes and prepare for the next step.</p>
-            </details>
-            <details>
-              <summary>Is Anchor &amp; Able Guide Co. a law firm?</summary>
-              <p>No. Anchor &amp; Able Guide Co. provides general educational information and practical process guidance, not legal advice or legal representation.</p>
-            </details>
-            <details>
-              <summary>Does this replace official agency guidance?</summary>
-              <p>No. Program rules can change and individual facts matter. Always confirm current requirements with the administering agency or a qualified professional before making a financial or legal decision.</p>
-            </details>
-            <details>
-              <summary>What should I do with an urgent deadline?</summary>
-              <p>Read the notice for appeal or response instructions, keep a copy, and contact the agency or an appropriate legal-services provider promptly. Do not wait for general educational content when a deadline is running.</p>
-            </details>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="in-the-works">
-      <div class="wrap">
-        <p><strong>In the works:</strong> <a href="https://tally.so/r/ArK8jz?guide=special-needs-trust" target="_blank" rel="noopener noreferrer">Special Needs Trust</a> · <a href="https://tally.so/r/ArK8jz?guide=respite-hours" target="_blank" rel="noopener noreferrer">Respite Hours</a> · <a href="https://tally.so/r/ArK8jz?guide=conservatorship" target="_blank" rel="noopener noreferrer">Conservatorship</a> — tap one to get word when it's ready →</p>
-      </div>
-    </section>
-    <section class="checklist" id="checklist">
-      <div class="wrap check-card">
-        <div class="check-copy">
-          <p class="eyebrow">Your five-minute reset</p>
-          <h2>Before your next call or appointment</h2>
-          <p>Use this simple preparation list whenever the system starts to feel scattered. Copy it into your notes and add the specifics for your situation.</p>
-          <button class="copy-button" id="copyChecklist" type="button">Copy checklist</button>
-          <p class="copy-status" id="copyStatus" aria-live="polite"></p>
-          <p class="check-next">Want this, plus the questions to ask on the call? The <a href="#guide-caregiver">Caregiver's Guide</a> ($9) has the full kit — lists, logs, and what to write down before anyone calls you back.</p>
-        </div>
-        <div class="check-items" aria-label="Preparation checklist">
-          <div class="check-item"><span class="check-icon" aria-hidden="true">✓</span><span>Write the exact question you need answered.</span></div>
-          <div class="check-item"><span class="check-icon" aria-hidden="true">✓</span><span>Put the notice, case number, and deadline in front of you.</span></div>
-          <div class="check-item"><span class="check-icon" aria-hidden="true">✓</span><span>Gather the documents that support your answer.</span></div>
-          <div class="check-item"><span class="check-icon" aria-hidden="true">✓</span><span>Note who you speak with, the date, and what they say.</span></div>
-          <div class="check-item"><span class="check-icon" aria-hidden="true">✓</span><span>End by confirming the next step and its deadline.</span></div>
-        </div>
-      </div>
-    </section>
-    <section class="about" id="about">
-      <div class="wrap about-grid">
-        <blockquote class="quote">“Families deserve a clear path through systems that were never written in plain language.”</blockquote>
-        <div class="about-copy">
-          <p class="eyebrow">Why Anchor &amp; Able Guide Co.</p>
-          <h2>One parent’s experience, shared with another.</h2>
-          <p>If it's late at night and you're still up, searching for answers about your child's benefits — I've been exactly where you are. I'm Beth. I was a single parent working full-time while raising two children and navigating the system on my own. For over 20 years I've navigated disability benefits for my own daughter — the denials, the paperwork, the phone calls that go nowhere — and I've been through the adult application process myself, approved after more than two years of waiting, following up, and staying persistent.</p>
-          <p>Every guide comes from a real application, assessment, or appeal in my own family — nothing here is theory. The focus is on real steps: reading notices, organizing records, documenting needs, and knowing which questions to ask. It's going to be OK — one step at a time.</p>
-        </div>
-      </div>
-    </section>
-    <section class="contact" id="contact">
-      <div class="wrap contact-grid">
-        <div>
-          <p class="eyebrow">Get in touch</p>
-          <h2>Have a question?</h2>
-        </div>
-        <div class="contact-copy">
-          <p>Email Anchor &amp; Able Guide Co. for questions about the digital guides and general inquiries.</p>
-          <a class="contact-email" href="mailto:anchorandableco@gmail.com">anchorandableco@gmail.com</a>
-        </div>
-      </div>
-    </section>
     </main>
 
   <footer>
@@ -970,5 +998,40 @@
       }
     })();
   </script>
+
+<script>
+(function () {
+  var panels = {};
+  document.querySelectorAll('.panel').forEach(function (p) { panels[p.id.replace('panel-', '')] = p; });
+  var legacy = { about: 'meetbeth', questions: 'goodtoknow', contact: 'goodtoknow', guides: 'welcome', checklist: 'caregiver', approach: 'welcome', guidance: 'welcome' };
+  function openPanel(key, push) {
+    if (!panels[key]) key = 'welcome';
+    document.querySelectorAll('.panel').forEach(function (p) { p.classList.toggle('active', p === panels[key]); });
+    document.querySelectorAll('.dash-link').forEach(function (a) {
+      var on = a.getAttribute('data-panel') === key;
+      a.classList.toggle('active', on);
+      if (on) { a.setAttribute('aria-current', 'true'); } else { a.removeAttribute('aria-current'); }
+    });
+    if (push) { try { history.replaceState(null, '', '#panel-' + key); } catch (e) {} }
+  }
+  document.querySelectorAll('.dash-link').forEach(function (a) {
+    a.addEventListener('click', function (e) { e.preventDefault(); openPanel(a.getAttribute('data-panel'), true); });
+  });
+  function fromHash() {
+    var h = location.hash.replace('#', '');
+    if (!h) return false;
+    if (h.indexOf('panel-') === 0) { openPanel(h.slice(6), false); return true; }
+    if (legacy[h]) { openPanel(legacy[h], false); return true; }
+    var el = document.getElementById(h);
+    if (el) {
+      var p = el.closest ? el.closest('.panel') : null;
+      if (p) { openPanel(p.id.replace('panel-', ''), false); setTimeout(function () { el.scrollIntoView({ block: 'center' }); }, 60); return true; }
+    }
+    return false;
+  }
+  window.addEventListener('hashchange', fromHash);
+  if (!fromHash()) openPanel('welcome', false);
+})();
+</script>
 </body>
 </html>
