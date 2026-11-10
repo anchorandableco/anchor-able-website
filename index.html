@@ -436,6 +436,14 @@
     .featured-guide-closing { margin-top: 14px; }
     .in-the-works { padding: 0 0 clamp(60px, 8vw, 96px); }
     .check-next { margin-top: 18px; }
+  
+    .proof-strip { padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .proof-grid { display: flex; flex-wrap: wrap; gap: 10px 34px; justify-content: center; text-align: center; font-size: 1rem; }
+    .topic-picker { padding: clamp(40px, 6vw, 64px) 0 6px; }
+    .picker-label { font-size: 1.25rem; font-weight: 800; margin: 0 0 16px; color: #0F2340; }
+    .picker-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .picker-chip { display: inline-block; padding: 13px 20px; border: 2px solid #0F2340; border-radius: 999px; color: #0F2340; font-weight: 700; text-decoration: none; line-height: 1.2; }
+    .picker-chip:hover, .picker-chip:focus { background: #0F2340; color: #fff; }
   </style>
 </head>
 <body>
@@ -479,63 +487,27 @@
               <a class="button" href="/free-guides.html">Start with a free guide</a>
               <a class="button outline" href="/ssi-parental-deeming-calculator">Try the free deeming calculator</a>
             </div>
-            <p class="hero-price-line">Every full guide is $9. No law degree, no jargon — parent to parent.</p>
           </div>
         </div>
       </div>
     </section>
-    <section class="free-strip" id="start-free">
+    <section class="proof-strip" aria-label="Why families trust these guides">
+      <div class="wrap proof-grid">
+        <span><strong>20+ years</strong> navigating these systems</span>
+        <span><strong>7 guides</strong>, one per topic</span>
+        <span>Written from <strong>real claims</strong> — parent to parent</span>
+      </div>
+    </section>
+    <section class="topic-picker" aria-label="Find your topic">
       <div class="wrap">
-        <div class="section-intro">
-          <div>
-            <p class="eyebrow">Start free</p>
-            <h2>Not sure where to start? Start free.</h2>
-          </div>
-          <p>Three short guides, written parent to parent. Enter your email, get the guide — no checkout, no card.</p>
+        <p class="picker-label">What are you here for?</p>
+        <div class="picker-row">
+          <a class="picker-chip" href="#guide-childhood-ssi">SSI for my child</a>
+          <a class="picker-chip" href="#guide-protective-supervision">More IHSS hours</a>
+          <a class="picker-chip" href="#guide-adult-ssdi-ssi">Applying as an adult</a>
+          <a class="picker-chip" href="#guide-able">Saving without losing SSI</a>
+          <a class="picker-chip" href="#guide-dac">Turning 18</a>
         </div>
-<article class="free-guide" aria-labelledby="freeGuideTitle">
-          <div>
-            <p class="eyebrow">Start free</p>
-            <h3 id="freeGuideTitle">Childhood SSI Guide (Lite)</h3>
-            <p>New to childhood SSI and not sure where to begin? Start here. This free 5-page guide covers the essentials in plain language — who may qualify, what to gather before you apply, and the steps that trip families up most.</p>
-            <p>It’s a summary of the full Childhood SSI guide, not the whole walkthrough. When you’re ready for every step in detail, the complete guide is available for purchase for $9.</p>
-          </div>
-          <div class="free-guide-actions">
-            <span class="offer-badge free-badge">Free guide</span>
-            <a class="button" href="/free-guides.html">Get the free guide</a>
-            <a class="button" href="/ssi-parental-deeming-calculator">NEW: 2026 Deeming Calculator + Checklist (Free)</a>
-            <a class="full-guide-link" href="#guide-childhood-ssi">See the full $9 Childhood SSI guide</a>
-            <p class="free-meta">Free PDF · 5 pages · No obligation — just enter your email</p>
-          </div>
-        </article>
-        <article class="free-guide" aria-labelledby="freeGuideAdultTitle">
-          <div>
-            <p class="eyebrow">Start free</p>
-            <h3 id="freeGuideAdultTitle">Adult SSDI &amp; SSI Guide (Lite)</h3>
-            <p>Applying for disability benefits as an adult, or helping someone who is? Start here. This free 5-page guide covers the essentials in plain language — SSDI vs SSI, why you start the clock today with the bare-bones application, the five habits that decide cases, and a first-week checklist.</p>
-            <p>It’s a summary of the full Adult SSDI &amp; SSI guide, not the whole walkthrough. When you’re ready for every step in detail, the complete guide is available for purchase for $9.</p>
-          </div>
-          <div class="free-guide-actions">
-            <span class="offer-badge free-badge">Free guide</span>
-            <a class="button" href="/free-guides.html">Get the free guide</a>
-            <a class="full-guide-link" href="#guide-adult-ssdi-ssi">See the full $9 Adult SSDI &amp; SSI guide</a>
-            <p class="free-meta">Free PDF · 5 pages · No obligation — just enter your email</p>
-          </div>
-        </article>
-        <article class="free-guide" aria-labelledby="freeGuideIhssTitle">
-          <div>
-            <p class="eyebrow">Start free</p>
-            <h3 id="freeGuideIhssTitle">IHSS Protective Supervision Guide (Lite)</h3>
-            <p>Already getting IHSS, but the hours are too low? Protective Supervision is the IHSS service most families never hear about — and it’s the one worth the most hours. This free 5-page quick guide covers what the county actually looks at and how to ask for it.</p>
-            <p>It’s the quick version of the full IHSS Protective Supervision guide, not the whole walkthrough. When you’re ready for every tool in detail, the complete guide is available for purchase for $9.</p>
-          </div>
-          <div class="free-guide-actions">
-            <span class="offer-badge free-badge">Free guide</span>
-            <a class="button" href="/free-guides.html">Get the free guide</a>
-            <a class="full-guide-link" href="#guide-protective-supervision">See the full $9 IHSS Protective Supervision guide</a>
-            <p class="free-meta">Free PDF · 5 pages · No obligation — just enter your email</p>
-          </div>
-        </article>
       </div>
     </section>
     <section class="guides" id="guides">
@@ -545,12 +517,8 @@
             <p class="eyebrow">Digital guides</p>
             <h2>Less overwhelm. More direction.</h2>
           </div>
-          <p>Open any guide for a short sample of what's inside. Every guide is $9, every one written from a real case — ours.</p>
+          <p>Open any guide for a short sample of what's inside — every one written from a real case, ours. Three of them start free.</p>
         </div>
-        
-        
-        
-        <p class="free-meta" style="margin:0 0 14px;">Launch pricing: every full guide is $9 through December 31, 2026.</p>
         <div class="guide-grid">
           
           <div class="guide-card" id="guide-childhood-ssi" role="button" tabindex="0" data-guide="childhood-ssi" aria-haspopup="dialog">
@@ -558,7 +526,7 @@
             <h3>Childhood SSI Benefits</h3>
             <p>A plain-language starting point for understanding eligibility, records, household information, and the application process.</p>
             <span class="guide-offer"><strong>$9</strong></span>
-            <a class="card-lite-link" href="/free-guides.html" target="_blank" rel="noopener noreferrer">Free lite version →</a>
+            <a class="card-lite-link" href="/free-guides.html" target="_blank" rel="noopener noreferrer">Start free — lite version →</a>
             <span class="guide-open">Preview guide</span>
           </div>
           <div class="guide-card" id="guide-caregiver" role="button" tabindex="0" data-guide="caregiver" aria-haspopup="dialog">
@@ -582,7 +550,7 @@
             <p>The step-by-step guide to the IHSS service worth the most hours — eligibility, the safety journal, the home-visit binder, and the decision.</p>
             <p style="margin-top:6px;">Statewide, Protective Supervision averages <strong>179 authorized hours a month</strong> — the most of any IHSS service — yet only about 1 in 9 recipients has it. <a href="https://ihssconnect.com/the-numbers-are-in-5-practical-takeaways-from-californias-may-2026-ihss-data/" target="_blank" rel="noopener noreferrer">(California IHSS program data, May 2026)</a></p>
             <span class="guide-offer"><strong>$9</strong></span>
-            <a class="card-lite-link" href="/free-guides.html" target="_blank" rel="noopener noreferrer">Free lite version →</a>
+            <a class="card-lite-link" href="/free-guides.html" target="_blank" rel="noopener noreferrer">Start free — lite version →</a>
             <span class="guide-open">Preview guide</span>
           </div>
           <div class="guide-card" id="guide-able" role="button" tabindex="0" data-guide="able" aria-haspopup="dialog">
@@ -604,7 +572,7 @@
             <h3>Adult SSDI &amp; SSI</h3>
             <p>A plain-language playbook for applying for disability benefits as an adult — start the clock with the bare-bones application, then build the file that decides your case.</p>
             <span class="guide-offer"><strong>$9</strong></span>
-            <a class="card-lite-link" href="/free-guides.html" target="_blank" rel="noopener noreferrer">Free lite version →</a>
+            <a class="card-lite-link" href="/free-guides.html" target="_blank" rel="noopener noreferrer">Start free — lite version →</a>
             <span class="guide-open">Preview guide</span>
           </div>
           
