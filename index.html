@@ -493,7 +493,7 @@
       <nav id="primaryNavigation" aria-label="Primary navigation" data-open="false">
         <ul>
           <li><a href="/free-guides.html">Free Guides</a></li>
-          <li><a href="#guides">Guides</a></li>
+          <li><a href="#panel-childhood">Guides</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="#questions">Questions</a></li>
@@ -1003,7 +1003,7 @@
 (function () {
   var panels = {};
   document.querySelectorAll('.panel').forEach(function (p) { panels[p.id.replace('panel-', '')] = p; });
-  var legacy = { about: 'meetbeth', questions: 'goodtoknow', contact: 'goodtoknow', guides: 'welcome', checklist: 'caregiver', approach: 'welcome', guidance: 'welcome' };
+  var legacy = { about: 'meetbeth', questions: 'goodtoknow', contact: 'goodtoknow', guides: 'childhood', checklist: 'caregiver', approach: 'welcome', guidance: 'welcome' };
   function openPanel(key, push) {
     if (!panels[key]) key = 'welcome';
     document.querySelectorAll('.panel').forEach(function (p) { p.classList.toggle('active', p === panels[key]); });
